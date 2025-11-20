@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;">
+    <title>Ketaki Walokar | Graphic Designer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent-orange: #ff6b35;
+            --accent-pink: #ff85a1;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 5%;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 133, 161, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .hero-text .name-highlight {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            animation: fadeInLeft 1s ease 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: fadeInLeft 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInLeft 1s ease 0.6s backwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-graphic {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            border-radius: 50% 50% 0 0;
+            position: relative;
+            margin: 0 auto;
+            border: 3px solid var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--secondary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-card {
+            background: var(--primary);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .education-card h3 {
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: var(--secondary);
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-orange);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--accent-orange);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-item {
+            background: var(--primary);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: none;
+        }
+
+        .portfolio-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-image::before {
+            opacity: 1;
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+        }
+
+        .portfolio-info h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-info p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 107, 53, 0.2);
+            color: var(--accent-orange);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--secondary);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-gray);
+            word-break: break-all;
+        }
+
+        .contact-card:hover p {
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        footer p {
+            color: var(--text-gray);
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-graphic {
+                max-width: 400px;
+                height: 400px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToSection('home')">KETAKI</div>
+            <ul>
+                <li><a onclick="scrollToSection('home')">Home</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('skills')">Skills</a></li>
+                <li><a onclick="scrollToSection('portfolio')">Portfolio</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    Hi, I'm <span class="name-highlight">Ketaki Walokar</span>
+                </h1>
+                <p class="subtitle">Graphic Designer</p>
+                <p>A BCA (Media & IT) student from ADYPU Pune. I love designing posters, logos, and UI/UX layouts. I enjoy turning creative ideas into visuals that connect with people.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('portfolio')">View My Work</button>
+                    <button class="btn-secondary" onclick="scrollToSection('contact')">Get In Touch</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    🎨
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="section-container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Hi, I'm Ketaki Walokar, a BCA (Media & IT) student from ADYPU Pune. I love designing posters, logos, and UI/UX layouts. I enjoy turning creative ideas into visuals that connect with people.</p>
+                    <p>As a passionate graphic designer, I believe in the power of visual storytelling. My designs are crafted to not only look beautiful but also communicate effectively and resonate with audiences.</p>
+                    <p>I'm constantly learning and exploring new design trends, tools, and techniques to enhance my creative skills and deliver impactful design solutions.</p>
+                </div>
+                <div class="education-card">
+                    <h3>Education</h3>
+                    <h4>Bachelor of Computer Science</h4>
+                    <p><strong>Ajeenkya D.Y Patil University</strong></p>
+                    <p>Specialization: Media & IT</p>
+                    <p>Location: Pune, India</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="section-container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Graphic Design</h3>
+                    <p>Visual identity & branding</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3>UI/UX Design</h3>
+                    <p>User-centered interfaces</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🖼️</div>
+                    <h3>Poster Design</h3>
+                    <p>Eye-catching visuals</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">✏️</div>
+                    <h3>Logo Design</h3>
+                    <p>Brand identity creation</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎬</div>
+                    <h3>Animation</h3>
+                    <p>Motion graphics</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web Design</h3>
+                    <p>Responsive layouts</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">✍️</div>
+                    <h3>Sketching</h3>
+                    <p>Concept visualization</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Canva Pro</h3>
+                    <p>Professional design tool</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="section-container">
+            <h2>My Latest Work</h2>
+            <div class="portfolio-tabs">
+                <button class="tab-btn active" data-category="all">All</button>
+                <button class="tab-btn" data-category="poster">Poster Design</button>
+                <button class="tab-btn" data-category="logo">Logo Design</button>
+                <button class="tab-btn" data-category="uiux">UI/UX</button>
+                <button class="tab-btn" data-category="product">Product Design</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Poster Design Item -->
+                <div class="portfolio-item active" data-category="poster">
+                    <div class="portfolio-image" style="background: #f5f5f5; position: relative;">
+                        <img src="https://i.ibb.co/M5s8qTNy/Screenshot-2025-11-20-051912.png" alt="New Arrival Shoe Poster" style="width: 100%; height: 100%; object-fit: contain; background: white;">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>New Arrival Shoe Poster</h3>
+                        <p>Promotional poster design for new shoe collection with 50% off offer - Clean layout with reflection effect</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Canva</span>
+                            <span class="tag">Typography</span>
+                            <span class="tag">Product Photography</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logo Design Item -->
+                <div class="portfolio-item active" data-category="logo">
+                    <div class="portfolio-image" style="background: #ffffff; position: relative;">
+                        <img src="https://i.ibb.co/B5fLPK3m/Screenshot-2025-11-20-051945.png" alt="Cheesy Delight Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Cheesy Delight Pizza Logo</h3>
+                        <p>Fun and vibrant pizza brand logo with hand-drawn illustrated elements and playful typography</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Illustration</span>
+                            <span class="tag">Food Industry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UI/UX Item -->
+                <div class="portfolio-item active" data-category="uiux">
+                    <div class="portfolio-image" style="background: #f8f9fa; position: relative;">
+                        <img src="https://i.ibb.co/qL3yQDgg/Screenshot-2025-11-20-052010.png" alt="Furniture App UI/UX" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Furniture Shopping App UI/UX</h3>
+                        <p>Complete UI/UX design for furniture e-commerce mobile application with product browsing and cart features</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Prototype</span>
+                            <span class="tag">Mobile App</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Design Item -->
+                <div class="portfolio-item active" data-category="product">
+                    <div class="portfolio-image" style="background: #ffffff; position: relative;">
+                        <img src="https://i.ibb.co/p69Z1LT4/Screenshot-2025-11-20-052045.png" alt="Mamaearth Product Banner" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Mamaearth Product Banner</h3>
+                        <p>Product display design for natural brightening serum featuring botanical elements and clean product photography</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Product Design</span>
+                            <span class="tag">Banner</span>
+                            <span class="tag">Natural Theme</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Poster -->
+                <div class="portfolio-item active" data-category="poster">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); position: relative;">
+                        <img src="https://via.placeholder.com/400x300/fce4ec/e91e63?text=Event+Poster" alt="Event Poster" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">📸 Click to upload your image</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Event Poster Collection</h3>
+                        <p>Series of creative posters for various events and campaigns</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Event Design</span>
+                            <span class="tag">Typography</span>
+                            <span class="tag">Layout</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Logo -->
+                <div class="portfolio-item active" data-category="logo">
+                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); position: relative;">
+                        <img src="https://via.placeholder.com/400x300/fff3e0/ff9800?text=Brand+Identity" alt="Brand Identity" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">📸 Click to upload your image</div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Brand Identity Package</h3>
+                        <p>Complete brand identity including logo, business cards, and brand guidelines</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Identity</span>
+                            <span class="tag">Corporate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2>Let's Connect</h2>
+            <p style="color: var(--text-gray); font-size: 1.1rem; margin-bottom: 2rem; text-align: center;">
+                I'm eager to learn, grow, and contribute my creativity. Feel free to reach out!
+            </p>
+            <div class="contact-grid">
+                <a href="mailto:ketakiw19@gmail.com" class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>ketakiw19@gmail.com</p>
+                </a>
+                <a href="tel:9665800625" class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p>9665800625</p>
+                </a>
+                <a href="https://www.instagram.com/ketkii_19" target="_blank" class="contact-card">
+                    <div class="contact-icon">📷</div>
+                    <h3>Instagram</h3>
+                    <p>@ketkii_19</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ketaki Walokar. All rights reserved. | Designed with passion 🎨</p>
+    </footer>
+
+    <script>
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Portfolio filtering
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.style.color = 'var(--text-light)';
+            });
+        });
+
+        // Add entrance animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.portfolio-item, .skill-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
